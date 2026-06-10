@@ -1951,7 +1951,6 @@ function initPortfolio(){
   },{threshold:0.12,root:pf});
   revealEls.forEach(el=>observer.observe(el));
 }
-
 function animateBarsIfVisible(){
   document.querySelectorAll('.sb-fill:not(.animated)').forEach(bar=>{
     const rect=bar.getBoundingClientRect();
@@ -1960,7 +1959,11 @@ function animateBarsIfVisible(){
     }
   });
 }
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+window.addEventListener('scroll', animateBarsIfVisible);
+animateBarsIfVisible();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
 emailjs.init({
@@ -1987,8 +1990,7 @@ async function handleFormSubmit(e){
     await emailjs.send(
       "service_ppla0ax",
       "template_rm3sh27",
-      params,
-      "rqX45zk2W-pyF8S75"
+      params
     );
 
     btn.innerHTML = "✓ Inquiry Sent!";
@@ -2001,3 +2003,4 @@ async function handleFormSubmit(e){
 }
 </script>
 </body>
+</html>
