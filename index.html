@@ -1966,3 +1966,38 @@ function animateBarsIfVisible(){
 emailjs.init({
   publicKey: "rqX45zk2W-pyF8S75"
 });
+
+async function handleFormSubmit(e){
+  e.preventDefault();
+
+  const btn = e.currentTarget;
+
+  const params = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    whatsapp: document.getElementById("whatsapp").value,
+    budget: document.getElementById("budget").value,
+    service: document.getElementById("service").value,
+    brief: document.getElementById("brief").value
+  };
+
+  btn.innerHTML = "Sending...";
+
+  try {
+    await emailjs.send(
+      "service_ppla0ax",
+      "template_rm3sh27",
+      params,
+      "rqX45zk2W-pyF8S75"
+    );
+
+    btn.innerHTML = "✓ Inquiry Sent!";
+    alert("Inquiry sent successfully!");
+  } catch (err) {
+    console.error(err);
+    btn.innerHTML = "Send Project Inquiry";
+    alert("Failed to send inquiry.");
+  }
+}
+</script>
+</body>
